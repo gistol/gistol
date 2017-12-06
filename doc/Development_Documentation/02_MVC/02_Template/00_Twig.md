@@ -98,8 +98,7 @@ You can use any Pimcore document editable in Twig by prefixing it with `pimcore_
 
 {{ pimcore_wysiwyg('content') }}
 
-{{ pimcore_select('type', { reload: true, store: [["video","video"], ["image","image"]] }) }}
-```
+
 
 ```php
 <h1><?= $this->input('headline') ?></h1>
