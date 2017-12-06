@@ -1,0 +1,41 @@
+{% import "@CoreShopFrontend/Common/Macro/currency.html.twig" as currency %}
+
+<div class="col-md-4 col-sm-6">
+    <div class="product-col">
+        <div class="image">
+            {% if product.getImage() %}
+                <a href="{{ path('coreshop_product_detail', {name: product.getName, product: product.getId}) }}">
+                    {{ product.getImage().getThumbnail("coreshop_productList").getHtml({"class": "img-responsive"})|raw }}
+                </a>
+            {% endif %}
+        </div>
+        <div class="caption">
+            <h4><a href="{{ path('coreshop_product_detail', {name: product.getName, product: product.getId}) }}">{{ product.getName }}</a></h4>
+            <div class="description">
+                {{ product.getShortDescription }}
+            </div>
+            <div class="price">
+                <span class="price-new">{{ currency.getPrice(product) }}</span>
+                {% set discount = product|coreshop_product_discount({'with_tax': false}) %}
+                {% if discount > 0 %}
+                    <span class="discount">
+                        - {{- currency.convertAndFormat(discount) }}
+                    </span>
+                {% endif %}
+            </div>
+            <div class="cart-button button-group">
+                <a href="{{ path('coreshop_wishlist_add', {product: product.id}) }}" class="btn btn-wishlist">
+                    <i class="fa fa-heart"></i>
+                </a>
+                <button type="button" title="" class="btn btn-compare" data-original-title="{{ 'compare'|trans }}" data-id="{{ product.getId }}">
+                    <i class="fa fa-bar-chart-o"></i>
+                </button>
+
+                <a href="{{ path('coreshop_cart_add', {product: product.id}) }}" type="button" class="btn btn-cart" rel="nofollow">
+                    {{ 'add_to_cart'|trans }}
+                    <i class="fa fa-shopping-cart"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

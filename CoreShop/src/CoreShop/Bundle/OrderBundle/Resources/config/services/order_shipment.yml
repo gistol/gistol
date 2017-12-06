@@ -1,0 +1,33 @@
+services:
+  coreshop.order_shipment.number_generator.default:
+    class: CoreShop\Bundle\OrderBundle\NumberGenerator\SequenceNumberGenerator
+    arguments: ['@coreshop.sequence.generator', 'shipment']
+
+  coreshop.order_shipment.transformer.order_item_to_shipment_item:
+    class: CoreShop\Bundle\OrderBundle\Transformer\OrderItemToShipmentItemTransformer
+    arguments:
+      - '@coreshop.object_service'
+      - '%coreshop.folder.order_shipment_item%'
+      - '@coreshop.transformer.event_dispatcher'
+
+  coreshop.order.transformer.order_to_shipment:
+    class: CoreShop\Bundle\OrderBundle\Transformer\OrderToShipmentTransformer
+    arguments:
+      - '@coreshop.order_shipment.transformer.order_item_to_shipment_item'
+      - '@coreshop.core.key_transformer'
+      - '@coreshop.order_shipment.number_generator.default'
+      - '%coreshop.folder.order_shipment%'
+      - '@coreshop.object_service'
+      - '@coreshop.repository.order_item'
+      - '@coreshop.factory.order_shipment_item'
+      - '@coreshop.transformer.event_dispatcher'
+
+  coreshop.form.type.order_document_items:
+    class: CoreShop\Bundle\OrderBundle\Form\Type\OrderDocumentCreationItemsType
+    tags:
+      - { name: form.type }
+
+  coreshop.form.type.shipment_creation:
+    class: CoreShop\Bundle\OrderBundle\Form\Type\OrderShipmentCreationType
+    tags:
+      - { name: form.type }

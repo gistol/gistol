@@ -1,0 +1,55 @@
+{
+  "name": "coreshop/core-bundle",
+  "type": "symfony-bundle",
+  "description": "CoreShop - Core Bundle (Glue Bundle)",
+  "keywords": [
+    "coreshop",
+    "pimcore",
+    "ecommerce"
+  ],
+  "homepage": "http://www.coreshop.org",
+  "license": "GPLv3",
+  "authors": [
+    {
+      "name": "Dominik Pfaffenbauer",
+      "email": "dominik@pfaffenbauer.at",
+      "homepage": "https://www.pfaffenbauer.at/",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.0",
+    "coreshop/order-bundle": "^2.0",
+    "coreshop/customer-bundle": "^2.0",
+    "coreshop/product-bundle": "^2.0",
+    "coreshop/address-bundle": "^2.0",
+    "coreshop/currency-bundle": "^2.0",
+    "coreshop/taxation-bundle": "^2.0",
+    "coreshop/store-bundle": "^2.0",
+    "coreshop/index-bundle": "^2.0",
+    "coreshop/payment-bundle": "^2.0",
+    "coreshop/sequence-bundle": "^2.0",
+    "coreshop/payum-bundle": "^2.0",
+    "coreshop/configuration-bundle": "^2.0",
+    "coreshop/notification-bundle": "^2.0",
+    "coreshop/fixture-bundle": "^2.0",
+    "coreshop/core": "^2.0",
+    "fzaninotto/faker": "^1.6",
+    "rinvex/country": "^3.1"
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "autoload": {
+    "psr-4": {
+      "CoreShop\\Bundle\\CoreBundle\\": ""
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.0-dev"
+    }
+  }
+}

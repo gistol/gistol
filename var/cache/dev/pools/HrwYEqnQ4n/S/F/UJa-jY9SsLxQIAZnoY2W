@@ -1,0 +1,4 @@
+<?php return array (
+  0 => 9223372036854775807,
+  1 => 'a:2:{i:0;O:47:"Pimcore\\Controller\\Configuration\\ResponseHeader":3:{s:6:"' . "\0" . '*' . "\0" . 'key";s:15:"X-Custom-Header";s:9:"' . "\0" . '*' . "\0" . 'values";a:2:{i:0;s:3:"Foo";i:1;s:3:"Bar";}s:10:"' . "\0" . '*' . "\0" . 'replace";b:0;}i:1;O:47:"Pimcore\\Controller\\Configuration\\ResponseHeader":3:{s:6:"' . "\0" . '*' . "\0" . 'key";s:16:"X-Custom-Header2";s:9:"' . "\0" . '*' . "\0" . 'values";s:7:"Bazinga";s:10:"' . "\0" . '*' . "\0" . 'replace";b:1;}}',
+);

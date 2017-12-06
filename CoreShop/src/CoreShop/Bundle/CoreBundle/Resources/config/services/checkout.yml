@@ -1,0 +1,48 @@
+services:
+  coreshop.checkout_manager.default:
+    class: CoreShop\Bundle\CoreBundle\Checkout\CheckoutManager
+
+  #default steps
+  coreshop.checkout.step.cart:
+    class: CoreShop\Bundle\CoreBundle\Checkout\Step\CartCheckoutStep
+
+  coreshop.checkout.step.customer:
+    class: CoreShop\Bundle\CoreBundle\Checkout\Step\CustomerCheckoutStep
+    arguments:
+      - '@coreshop.context.customer'
+      - '@form.factory'
+      - '@coreshop.customer.registration_service'
+
+  coreshop.checkout.step.address:
+    class: CoreShop\Bundle\CoreBundle\Checkout\Step\AddressCheckoutStep
+    arguments: ['@form.factory', '@security.token_storage']
+
+  coreshop.checkout.step.shipping:
+    class: CoreShop\Bundle\CoreBundle\Checkout\Step\ShippingCheckoutStep
+    arguments:
+      - '@coreshop.carrier.discovery'
+      - '@coreshop.carrier.price_calculator.taxed'
+      - '@coreshop.shipping.carrier.validator'
+      - '@form.factory'
+      - '@coreshop.context.currency'
+      - '@coreshop.money_formatter'
+      - '@coreshop.currency_converter'
+      - '@coreshop.context.store'
+
+  coreshop.checkout.step.payment:
+    class: CoreShop\Bundle\CoreBundle\Checkout\Step\PaymentCheckoutStep
+    arguments: ['@form.factory']
+
+  coreshop.checkout.step.summary:
+    class: CoreShop\Bundle\CoreBundle\Checkout\Step\SummaryCheckoutStep
+
+  # Forms
+  coreshop.form.type.checkout_address:
+    class: CoreShop\Bundle\CoreBundle\Form\Type\Checkout\AddressType
+    tags:
+      - {name: form.type}
+
+  coreshop.form.type.checkout_payment:
+    class: CoreShop\Bundle\CoreBundle\Form\Type\Checkout\PaymentType
+    tags:
+      - {name: form.type}

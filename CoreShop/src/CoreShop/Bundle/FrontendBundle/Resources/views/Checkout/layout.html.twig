@@ -1,0 +1,12 @@
+{% extends '@CoreShopFrontend/layout.html.twig' %}
+
+{% block title %}
+    {% block checkout_title %}{% endblock %} | {{ 'checkout'|trans }}
+{% endblock %}
+
+{% block content %}
+    {% include '@CoreShopFrontend/Checkout/_order-steps.html.twig' with {currentStep: currentStep, steps: checkoutSteps} only %}
+
+    {% block checkout %}
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,8 @@
+services:
+  coreshop.listener.cart_blamer:
+    class: CoreShop\Bundle\CoreBundle\EventListener\CartBlamerListener
+    arguments:
+      - '@coreshop.cart.manager'
+    tags:
+      - { name: kernel.event_listener, event: security.interactive_login, method: onInteractiveLogin }
+      - { name: kernel.event_listener, event: coreshop.customer.register, method: onRegisterEvent }
